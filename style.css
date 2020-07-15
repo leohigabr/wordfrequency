@@ -1,0 +1,16 @@
+body{
+    background-color: black;
+}
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#countBtn{
+    font-weight: bold;
+    background-color:white;
+    border: none;
+    border-radius: 5em;
+    width: 23em;
+}
+.inputBox{
+    resize: none;
+}
