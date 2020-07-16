@@ -1,4 +1,5 @@
 const checkBtn = document.getElementById('countBtn');
+const showResult = document.getElementById('result');
 
 const getInput = () => {
      return (document.querySelector('.inputBox')
@@ -6,26 +7,36 @@ const getInput = () => {
         .replace(/[^\w\s]/gi, '')
         .toLowerCase()
         .trim()
-        .split(' ')
+        .split(/\s/)
      )
 }
 
+const wordFreq = (input) => {
+    return input
+      .reduce((map, word) =>
+        Object.assign(map, {
+          [word]: (map[word])
+            ? map[word] + 1
+            : 1,
+        }),
+        {}
+      );
+}
+
+const createP = () =>{
+    const p = document.createElement('p');
+    return p;
+}
+
+const insertP = (word, freq) => {
+    const p = createP();
+    p.innerText = `${word}\ncount = ${freq}`;
+    showResult.appendChild(p);
+}
+
 checkBtn.addEventListener('click', () => {
-    const words = getInput();
-    console.log(words);
-    console.log("length:", words.length);
-
-    /* I will continue this code below, after
-       discovering a way of cleaning (properly) and
-       removing line breaks from the input.
-
-    let count = [];
-    for(let i=0;i<words.length;i++){
-        for(let j=0;j<words.length;j++){
-            if(words[i] == words[j]){
-                count++;
-            }
-        }
-    }
-    */
+    const bagOf = wordFreq(getInput());
+    Object.keys(bagOf).sort().forEach(function(word) {
+        insertP(word, bagOf[word]);
+    })
 })

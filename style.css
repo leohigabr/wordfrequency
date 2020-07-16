@@ -10,7 +10,11 @@ body{
     border: none;
     border-radius: 5em;
     width: 23em;
+    margin-bottom: 3em;
 }
 .inputBox{
     resize: none;
+}
+#result{
+    color:white;
 }
