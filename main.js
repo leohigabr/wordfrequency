@@ -34,8 +34,15 @@ const insertP = (word, freq) => {
     showResult.appendChild(p);
 }
 
+const sortBag = (key, values) => {
+    const sorted = Object.assign(values, key);
+    return sorted;
+}
+
 checkBtn.addEventListener('click', () => {
+    const oldBag = document.getElementById('result');
     const bagOf = wordFreq(getInput());
+    oldBag.innerHTML = '';
     Object.keys(bagOf).sort().forEach(function(word) {
         insertP(word, bagOf[word]);
     })
