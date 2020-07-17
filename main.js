@@ -28,22 +28,21 @@ const createP = () =>{
     return p;
 }
 
-const insertP = (word, freq) => {
+const insertP = (word, count) => {
     const p = createP();
-    p.innerText = `${word}\ncount = ${freq}`;
+    p.innerText = `${word}\ncount = ${count}`;
     showResult.appendChild(p);
 }
 
-const sortBag = (key, values) => {
-    const sorted = Object.assign(values, key);
-    return sorted;
+const sortBag = (unsortedBag) => {
+    for(const [key, value] of Object.entries(unsortedBag).sort((a,b)=>b[1]-a[1])){
+        insertP(key, value);      
+    }
 }
 
 checkBtn.addEventListener('click', () => {
     const oldBag = document.getElementById('result');
-    const bagOf = wordFreq(getInput());
+    const unsortedBag = wordFreq(getInput());
     oldBag.innerHTML = '';
-    Object.keys(bagOf).sort().forEach(function(word) {
-        insertP(word, bagOf[word]);
-    })
+    sortBag(unsortedBag);
 })
