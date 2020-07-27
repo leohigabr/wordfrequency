@@ -23,21 +23,41 @@ const wordFreq = (input) => {
       );
 }
 
-const createP = () =>{
-    const p = document.createElement('p');
-    return p;
+const createHeader = () => {
+  const tr = document.createElement('tr');
+
+  const thWord = document.createElement('th');
+  thWord.appendChild(document.createTextNode('Word'));
+  tr.appendChild(thWord);
+
+  const thCount = document.createElement('th');
+  thCount.appendChild(document.createTextNode('Count'));
+  tr.appendChild(thCount);
+
+  showResult.appendChild(tr);
 }
 
-const insertP = (word, count) => {
-    const p = createP();
-    p.innerText = `${word}\ncount = ${count}`;
-    showResult.appendChild(p);
+const createTable = (word, count) => {
+    const tr = document.createElement('tr');
+    const th = document.createElement('th');
+
+    const tdWord = document.createElement('td');
+    tdWord.appendChild(document.createTextNode(word));
+    tr.appendChild(tdWord);
+
+    const tdCount = document.createElement('td')
+    tdCount.appendChild(document.createTextNode(count));
+    tr.appendChild(tdCount);
+    showResult.appendChild(tr);  
 }
 
 const sortBag = (unsortedBag) => {
+  createHeader();
     for(const [key, value] of Object.entries(unsortedBag).sort((a,b)=>b[1]-a[1])){
-        insertP(key, value);      
+        createTable(key, value);   
+        console.log(key, value)   
     }
+
 }
 
 checkBtn.addEventListener('click', () => {
