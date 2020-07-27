@@ -39,7 +39,6 @@ const createHeader = () => {
 
 const createTable = (word, count) => {
     const tr = document.createElement('tr');
-    const th = document.createElement('th');
 
     const tdWord = document.createElement('td');
     tdWord.appendChild(document.createTextNode(word));
@@ -48,6 +47,7 @@ const createTable = (word, count) => {
     const tdCount = document.createElement('td')
     tdCount.appendChild(document.createTextNode(count));
     tr.appendChild(tdCount);
+    
     showResult.appendChild(tr);  
 }
 
@@ -57,7 +57,6 @@ const sortBag = (unsortedBag) => {
         createTable(key, value);   
         console.log(key, value)   
     }
-
 }
 
 checkBtn.addEventListener('click', () => {
