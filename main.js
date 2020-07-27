@@ -54,8 +54,7 @@ const createTable = (word, count) => {
 const sortBag = (unsortedBag) => {
   createHeader();
     for(const [key, value] of Object.entries(unsortedBag).sort((a,b)=>b[1]-a[1])){
-        createTable(key, value);   
-        console.log(key, value)   
+        createTable(key, value);     
     }
 }
 
